@@ -6,3 +6,4 @@ public enum SituationFamiliale {
     DIVORCE,
     VEUF
 }
+

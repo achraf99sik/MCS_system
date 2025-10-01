@@ -14,4 +14,13 @@ public class Connect {
             throw new RuntimeException("Failed to create DB connection", e);
         }
     }
+    public static Connect gitInstance(){
+        if(instance== null){
+            instance = new Connect();
+        }
+        return instance;
+    }
+    public Connection getConnection() {
+        return connection;
+    }
 }
