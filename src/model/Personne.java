@@ -1,5 +1,7 @@
 package model;
 
+import enums.Activite;
+import enums.SecteurActivite;
 import enums.SituationFamiliale;
 
 import java.time.LocalDate;
@@ -18,6 +20,54 @@ abstract public class Personne {
     protected SituationFamiliale situationFamiliale;
     protected LocalDateTime createdAt;
     protected Integer score;
+    public Personne(
+            UUID id,
+            String nom,
+            String prenom,
+            LocalDate dateNaissance,
+            String ville,
+            Integer nombreEnfants,
+            String investissement,
+            String placement,
+            SituationFamiliale situationFamiliale,
+            LocalDateTime createdAt,
+            Integer score
+    ){
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.ville = ville;
+        this.nombreEnfants = nombreEnfants;
+        this.investissement = investissement;
+        this.placement = placement;
+        this.situationFamiliale = situationFamiliale;
+        this.createdAt = createdAt;
+        this.score = score;
+    }
+    public Personne(
+            String nom,
+            String prenom,
+            LocalDate dateNaissance,
+            String ville,
+            Integer nombreEnfants,
+            String investissement,
+            String placement,
+            SituationFamiliale situationFamiliale,
+            LocalDateTime createdAt,
+            Integer score
+    ){
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.ville = ville;
+        this.nombreEnfants = nombreEnfants;
+        this.investissement = investissement;
+        this.placement = placement;
+        this.situationFamiliale = situationFamiliale;
+        this.createdAt = createdAt;
+        this.score = score;
+    }
 
     public UUID getId() {
         return id;

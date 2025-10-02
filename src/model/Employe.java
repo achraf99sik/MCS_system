@@ -1,7 +1,12 @@
 package model;
 
 import enums.Secteur;
+import enums.SituationFamiliale;
 import enums.TypeContrat;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class Employe extends Personne{
     private int salaire;
@@ -9,4 +14,95 @@ public class Employe extends Personne{
     private String poste;
     private TypeContrat typecontrat;
     private Secteur secteur;
+
+    public Employe(
+            UUID id,
+            String nom,
+            String prenom,
+            LocalDate dateNaissance,
+            String ville,
+            Integer nombreEnfants,
+            String investissement,
+            String placement,
+            SituationFamiliale situationFamiliale,
+            LocalDateTime createdAt,
+            Integer score,
+            int salaire,
+            int anciennete,
+            String poste,
+            TypeContrat typecontrat,
+            Secteur secteur
+    ) {
+        super(id, nom, prenom, dateNaissance, ville, nombreEnfants, investissement, placement, situationFamiliale, createdAt, score);
+        this.salaire = salaire;
+        this.Anciennete = anciennete;
+        this.poste = poste;
+        this.typecontrat = typecontrat;
+        this.secteur = secteur;
+    }
+
+    public Employe(
+            String nom,
+            String prenom,
+            java.time.LocalDate dateNaissance,
+            String ville,
+            Integer nombreEnfants,
+            String investissement,
+            String placement,
+            enums.SituationFamiliale situationFamiliale,
+            java.time.LocalDateTime createdAt,
+            Integer score,
+            int salaire,
+            int anciennete,
+            String poste,
+            TypeContrat typecontrat,
+            Secteur secteur
+    ) {
+        super(nom, prenom, dateNaissance, ville, nombreEnfants, investissement, placement, situationFamiliale, createdAt, score);
+        this.salaire = salaire;
+        this.Anciennete = anciennete;
+        this.poste = poste;
+        this.typecontrat = typecontrat;
+        this.secteur = secteur;
+    }
+
+    public int getSalaire() {
+        return salaire;
+    }
+
+    public void setSalaire(int salaire) {
+        this.salaire = salaire;
+    }
+
+    public int getAnciennete() {
+        return Anciennete;
+    }
+
+    public void setAnciennete(int anciennete) {
+        Anciennete = anciennete;
+    }
+
+    public String getPoste() {
+        return poste;
+    }
+
+    public void setPoste(String poste) {
+        this.poste = poste;
+    }
+
+    public TypeContrat getTypecontrat() {
+        return typecontrat;
+    }
+
+    public void setTypecontrat(TypeContrat typecontrat) {
+        this.typecontrat = typecontrat;
+    }
+
+    public Secteur getSecteur() {
+        return secteur;
+    }
+
+    public void setSecteur(Secteur secteur) {
+        this.secteur = secteur;
+    }
 }

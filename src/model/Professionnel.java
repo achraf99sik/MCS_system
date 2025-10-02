@@ -30,21 +30,11 @@ public class Professionnel extends Personne{
             LocalDateTime createdAt,
             Integer score
     ){
+        super(id, nom, prenom, dateNaissance, ville, nombreEnfants, investissement, placement, situationFamiliale, createdAt, score);
         this.revenu = revenu;
         this.immatriculationFiscale = immatriculationFiscale;
         this.secteurActivite = secteurActivite;
         this.activite = activite;
-        this.id = id;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.dateNaissance = dateNaissance;
-        this.ville = ville;
-        this.nombreEnfants = nombreEnfants;
-        this.investissement = investissement;
-        this.placement = placement;
-        this.situationFamiliale = situationFamiliale;
-        this.createdAt = createdAt;
-        this.score = score;
     }
     public Professionnel(
             double revenu,
@@ -62,20 +52,11 @@ public class Professionnel extends Personne{
             LocalDateTime createdAt,
             Integer score
     ){
+        super(nom, prenom, dateNaissance, ville, nombreEnfants, investissement, placement, situationFamiliale, createdAt, score);
         this.revenu = revenu;
         this.immatriculationFiscale = immatriculationFiscale;
         this.secteurActivite = secteurActivite;
         this.activite = activite;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.dateNaissance = dateNaissance;
-        this.ville = ville;
-        this.nombreEnfants = nombreEnfants;
-        this.investissement = investissement;
-        this.placement = placement;
-        this.situationFamiliale = situationFamiliale;
-        this.createdAt = createdAt;
-        this.score = score;
     }
 
     public double getRevenu() {
