@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Employe extends Personne{
-    private int salaire;
-    private int Anciennete;
+    private double salaire;
+    private Integer Anciennete;
     private String poste;
     private TypeContrat typecontrat;
     private Secteur secteur;
@@ -27,8 +27,8 @@ public class Employe extends Personne{
             SituationFamiliale situationFamiliale,
             LocalDateTime createdAt,
             Integer score,
-            int salaire,
-            int anciennete,
+            double salaire,
+            Integer anciennete,
             String poste,
             TypeContrat typecontrat,
             Secteur secteur
@@ -52,8 +52,8 @@ public class Employe extends Personne{
             enums.SituationFamiliale situationFamiliale,
             java.time.LocalDateTime createdAt,
             Integer score,
-            int salaire,
-            int anciennete,
+            double salaire,
+            Integer anciennete,
             String poste,
             TypeContrat typecontrat,
             Secteur secteur
@@ -66,11 +66,11 @@ public class Employe extends Personne{
         this.secteur = secteur;
     }
 
-    public int getSalaire() {
+    public double getSalaire() {
         return salaire;
     }
 
-    public void setSalaire(int salaire) {
+    public void setSalaire(double salaire) {
         this.salaire = salaire;
     }
 

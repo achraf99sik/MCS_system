@@ -34,7 +34,7 @@ public class EmployeRepository {
             stmt.setInt(9, employe.getScore());
             stmt.setString(10, employe.getSituationFamiliale().toString());
             stmt.setTimestamp(11, Timestamp.valueOf(employe.getCreatedAt()));
-            stmt.setInt(12, employe.getSalaire());
+            stmt.setDouble(12, employe.getSalaire());
             stmt.setInt(13, employe.getAnciennete());
             stmt.setString(14, employe.getPoste());
             stmt.setString(15, employe.getTypecontrat().toString());
@@ -60,7 +60,7 @@ public class EmployeRepository {
             stmt.setInt(8, employe.getScore());
             stmt.setString(9, employe.getSituationFamiliale().toString());
             stmt.setTimestamp(10, Timestamp.valueOf(employe.getCreatedAt()));
-            stmt.setInt(11, employe.getSalaire());
+            stmt.setDouble(11, employe.getSalaire());
             stmt.setInt(12, employe.getAnciennete());
             stmt.setString(13, employe.getPoste());
             stmt.setString(14, employe.getTypecontrat().toString());
@@ -98,7 +98,7 @@ public class EmployeRepository {
                             SituationFamiliale.valueOf(res.getString("situation_familiale")),
                             res.getTimestamp("created_at").toLocalDateTime(),
                             res.getInt("score"),
-                            res.getInt("salaire"),
+                            res.getDouble("salaire"),
                             res.getInt("anciennete"),
                             res.getString("poste"),
                             TypeContrat.valueOf(res.getString("type_contrat")),
@@ -129,7 +129,7 @@ public class EmployeRepository {
                         SituationFamiliale.valueOf(res.getString("situation_familiale")),
                         res.getTimestamp("created_at").toLocalDateTime(),
                         res.getInt("score"),
-                        res.getInt("salaire"),
+                        res.getDouble("salaire"),
                         res.getInt("anciennete"),
                         res.getString("poste"),
                         TypeContrat.valueOf(res.getString("type_contrat")),

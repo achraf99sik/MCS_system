@@ -1,6 +1,8 @@
 package controller;
 
+import enums.*;
 import service.*;
+import view.ClientView;
 
 import java.util.Scanner;
 
@@ -8,28 +10,28 @@ public class MainMenuController {
     private final AnalyticsService analyticsService;
     private final DecisionService decisionService;
     private final IncidentService incidentService;
-    private final ClientService clientService;
     private final ScoreService scoreService;
     private final CreditService creditService;
     private final PaiementService paiementService;
+    private final ClientView clientView;
 
     private final Scanner scanner = new Scanner(System.in);
     public MainMenuController(
             AnalyticsService analyticsService,
             DecisionService decisionService,
             IncidentService incidentService,
-            ClientService clientService,
             ScoreService scoreService,
             CreditService creditService,
-            PaiementService paiementService
+            PaiementService paiementService,
+            ClientView clientView
     ){
         this.analyticsService = analyticsService;
         this.decisionService = decisionService;
         this.incidentService = incidentService;
-        this.clientService = clientService;
         this.scoreService = scoreService;
         this.creditService = creditService;
         this.paiementService = paiementService;
+        this.clientView = clientView;
     }
 
     public void start() {
@@ -59,23 +61,23 @@ public class MainMenuController {
                     decisionEngine();
                     break;
                 case 0:
-                    System.out.println("Merci d’avoir utilisé le système. Au revoir.");
+                    System.out.println("Merci d'avoir utilise le systeme. Au revoir.");
                     break;
                 default:
-                    System.out.println("Choix invalide, réessayez.");
+                    System.out.println("Choix invalide, reessayez.");
             }
 
         } while (choice != 0);
     }
 
     private void printMainMenu() {
-        System.out.println("\n===== Système de Scoring Micro-Crédit =====");
+        System.out.println("\n===== Systeme de Scoring Micro-Credit =====");
         System.out.println("1. Gestion des Clients");
         System.out.println("2. Calcul du Score");
-        System.out.println("3. Gestion des Crédits");
+        System.out.println("3. Gestion des Credits");
         System.out.println("4. Gestion des Paiements / Historique");
         System.out.println("5. Analytics & Reporting");
-        System.out.println("6. Moteur de Décision Automatique");
+        System.out.println("6. Moteur de Decision Automatique");
         System.out.println("0. Quitter");
         System.out.print("Votre choix: ");
     }
@@ -91,58 +93,318 @@ public class MainMenuController {
     // ================= MODULES =================
 
     private void manageClients() {
-        System.out.println("\n--- Gestion des Clients ---");
-        System.out.println("1. Créer un nouveau client");
-        System.out.println("2. Modifier un client");
-        System.out.println("3. Consulter un profil client");
-        System.out.println("4. Supprimer un client");
-        System.out.println("5. Lister tous les clients");
-        System.out.print("Votre choix: ");
-        int choice = getChoice();
+        int choice;
+        do {
+            System.out.println("\n--- Gestion des Clients ---");
+            System.out.println("1. Creer un nouveau client");
+            System.out.println("2. Modifier informations client");
+            System.out.println("3. Consulter profil client");
+            System.out.println("4. Supprimer client");
+            System.out.println("5. Lister tous les clients");
+            System.out.println("0. Retour au menu principal");
+            System.out.print("Votre choix: ");
+            choice = getChoice();
 
-        switch (choice) {
-            case 1:
-                clientService.createClient();
-                break;
-            case 2:
-                clientService.updateClient();
-                break;
-            case 3:
-                clientService.getClient();
-                break;
-            case 4:
-                clientService.deleteClient();
-                break;
-            case 5:
-                clientService.listClients();
-                break;
-            default:
-                System.out.println("Choix invalide");
-        }
+            switch (choice) {
+                case 1:
+                    clientView.createClient();
+                    break;
+                case 2:
+                    clientView.editClient();
+                    break;
+                case 3:
+                    clientView.viewClientProfile();
+                    break;
+                case 4:
+                    clientView.deleteClient();
+                    break;
+                case 5:
+                    clientView.listAllClients();
+                    break;
+                case 0:
+                    System.out.println("Retour au menu principal.");
+                    break;
+                default:
+                    System.out.println("Choix invalide, reessayez.");
+            }
+        } while (choice != 0);
+    }
+    private void calculateScore() {
+        int choice;
+        do {
+            System.out.println("\n--- Calcul du Score ---");
+            System.out.println("1. Calculer le score d'un client");
+            System.out.println("2. Calculer la capacite d'emprunt");
+            System.out.println("0. Retour au menu principal");
+            System.out.print("Votre choix: ");
+            choice = getChoice();
+
+            switch (choice) {
+                case 1:
+                    calculateScoreView();
+                    break;
+                case 2:
+                    calculateLoanCapacityView();
+                    break;
+                case 0:
+                    System.out.println("Retour au menu principal.");
+                    break;
+                default:
+                    System.out.println("Choix invalide, reessayez.");
+            }
+        } while (choice != 0);
     }
 
-    private void calculateScore() {
-        System.out.println("\n--- Calcul du Score ---");
-        scoreService.calculateScore();
+    private void calculateScoreView() {
+        System.out.println("\n--- Calculer le score d'un client ---");
+        System.out.print("ID du client: ");
+        String clientIdStr = scanner.nextLine();
+        System.out.println("Fonctionnalite non implementee.");
+    }
+
+    private void calculateLoanCapacityView() {
+        System.out.println("\n--- Calculer la capacite d'emprunt ---");
+        System.out.print("ID du client: ");
+        String clientIdStr = scanner.nextLine();
+        System.out.println("Fonctionnalite non implementee.");
     }
 
     private void manageCredits() {
-        System.out.println("\n--- Gestion des Crédits ---");
-        creditService.manageCredits();
+        int choice;
+        do {
+            System.out.println("\n--- Gestion des Credits ---");
+            System.out.println("1. Creer un nouveau credit");
+            System.out.println("2. Modifier un credit");
+            System.out.println("3. Consulter un credit");
+            System.out.println("4. Supprimer un credit");
+            System.out.println("5. Lister tous les credits");
+            System.out.println("0. Retour au menu principal");
+            System.out.print("Votre choix: ");
+            choice = getChoice();
+
+            switch (choice) {
+                case 1:
+                    createCreditView();
+                    break;
+                case 2:
+                    editCreditView();
+                    break;
+                case 3:
+                    viewCreditProfileView();
+                    break;
+                case 4:
+                    deleteCreditView();
+                    break;
+                case 5:
+                    listAllCreditsView();
+                    break;
+                case 0:
+                    System.out.println("Retour au menu principal.");
+                    break;
+                default:
+                    System.out.println("Choix invalide, reessayez.");
+            }
+        } while (choice != 0);
+    }
+
+    private void createCreditView() {
+        System.out.println("\n--- Creer un nouveau credit ---");
+        System.out.print("Date de credit (YYYY-MM-DD): ");
+        String dateCreditStr = scanner.nextLine();
+        System.out.print("Montant demande: ");
+        double montantDemande = Double.parseDouble(scanner.nextLine());
+        System.out.print("Montant octroye: ");
+        double montantOctroye = Double.parseDouble(scanner.nextLine());
+        System.out.print("Taux d'interet: ");
+        double tauxInteret = Double.parseDouble(scanner.nextLine());
+        System.out.print("Duree en mois: ");
+        int dureeEnMois = Integer.parseInt(scanner.nextLine());
+        System.out.print("Type de credit (CONSOMMATION, IMMOBILIER, AUTO): ");
+        String typeCreditStr = scanner.nextLine();
+        System.out.print("Decision (ACCORDIMMEDIAT, ETUDEMANUELLE, REFUS_AUTOMATIQUE): ");
+        String decisionCreditStr = scanner.nextLine();
+        System.out.println("Credit cree avec succes (fonctionnalite non implementee).");
+    }
+
+    private void editCreditView() {
+        System.out.println("\n--- Modifier un credit ---");
+        System.out.print("ID du credit a modifier: ");
+        String creditIdStr = scanner.nextLine();
+        System.out.println("Fonctionnalite non implementee.");
+    }
+
+    private void viewCreditProfileView() {
+        System.out.println("\n--- Consulter un credit ---");
+        System.out.print("ID du credit a consulter: ");
+        String creditIdStr = scanner.nextLine();
+        System.out.println("Fonctionnalite non implementee.");
+    }
+
+    private void deleteCreditView() {
+        System.out.println("\n--- Supprimer un credit ---");
+        System.out.print("ID du credit a supprimer: ");
+        String creditIdStr = scanner.nextLine();
+        System.out.println("Fonctionnalite non implementee.");
+    }
+
+    private void listAllCreditsView() {
+        System.out.println("\n--- Liste de tous les credits ---");
+        System.out.println("Fonctionnalite non implementee.");
     }
 
     private void managePayments() {
-        System.out.println("\n--- Historique des Paiements ---");
-        paiementService.managePayments();
+        int choice;
+        do {
+            System.out.println("\n--- Historique des Paiements ---");
+            System.out.println("1. Generer les echeances");
+            System.out.println("2. Classer les paiements");
+            System.out.println("3. Gerer les regularisations d'impayes");
+            System.out.println("4. Appliquer les penalites/bonus");
+            System.out.println("0. Retour au menu principal");
+            System.out.print("Votre choix: ");
+            choice = getChoice();
+
+            switch (choice) {
+                case 1:
+                    generateEcheancesView();
+                    break;
+                case 2:
+                    classifyPaymentView();
+                    break;
+                case 3:
+                    manageUnpaidRegularizationsView();
+                    break;
+                case 4:
+                    applyPenaltiesBonusesView();
+                    break;
+                case 0:
+                    System.out.println("Retour au menu principal.");
+                    break;
+                default:
+                    System.out.println("Choix invalide, reessayez.");
+            }
+        } while (choice != 0);
+    }
+
+    private void generateEcheancesView() {
+        System.out.println("\n--- Generer les echeances ---");
+        System.out.print("ID du credit: ");
+        String creditIdStr = scanner.nextLine();
+        System.out.println("Fonctionnalite non implementee.");
+    }
+
+    private void classifyPaymentView() {
+        System.out.println("\n--- Classer les paiements ---");
+        System.out.print("ID de l'echeance: ");
+        String echeanceIdStr = scanner.nextLine();
+        System.out.print("Statut du paiement (PAYEATEMPS, ENRETARD, PAYEENRETARD, IMPAYENONREGLE, IMPAYEREGLE): ");
+        String statutPaiementStr = scanner.nextLine();
+        System.out.println("Fonctionnalite non implementee.");
+    }
+
+    private void manageUnpaidRegularizationsView() {
+        System.out.println("\n--- Gerer les regularisations d'impayes ---");
+        System.out.print("ID de l'incident: ");
+        String incidentIdStr = scanner.nextLine();
+        System.out.println("Fonctionnalite non implementee.");
+    }
+
+    private void applyPenaltiesBonusesView() {
+        System.out.println("\n--- Appliquer les penalites/bonus ---");
+        System.out.print("ID du client: ");
+        String clientIdStr = scanner.nextLine();
+        System.out.println("Fonctionnalite non implementee.");
     }
 
     private void analytics() {
-        System.out.println("\n--- Analytics & Reporting ---");
-        analyticsService.runAnalytics();
+        int choice;
+        do {
+            System.out.println("\n--- Analytics & Reporting ---");
+            System.out.println("1. Recherche clients eligibles credit immobilier");
+            System.out.println("2. Clients a risque necessitant suivi et accompagnement");
+            System.out.println("3. Tri par score, revenus, anciennete");
+            System.out.println("4. Repartition par type d'emploi");
+            System.out.println("5. Usage Business: campagne publicitaire credit de consommation");
+            System.out.println("0. Retour au menu principal");
+            System.out.print("Votre choix: ");
+            choice = getChoice();
+
+            switch (choice) {
+                case 1:
+                    searchEligibleClientsView();
+                    break;
+                case 2:
+                    listRiskyClientsView();
+                    break;
+                case 3:
+                    sortClientsView();
+                    break;
+                case 4:
+                    distributionByEmploymentTypeView();
+                    break;
+                case 5:
+                    consumerCreditCampaignView();
+                    break;
+                case 0:
+                    System.out.println("Retour au menu principal.");
+                    break;
+                default:
+                    System.out.println("Choix invalide, reessayez.");
+            }
+        } while (choice != 0);
+    }
+
+    private void searchEligibleClientsView() {
+        System.out.println("\n--- Recherche clients eligibles credit immobilier ---");
+        System.out.println("Fonctionnalite non implementee.");
+    }
+
+    private void listRiskyClientsView() {
+        System.out.println("\n--- Clients a risque necessitant suivi et accompagnement ---");
+        System.out.println("Fonctionnalite non implementee.");
+    }
+
+    private void sortClientsView() {
+        System.out.println("\n--- Tri par score, revenus, anciennete ---");
+        System.out.println("Fonctionnalite non implementee.");
+    }
+
+    private void distributionByEmploymentTypeView() {
+        System.out.println("\n--- Repartition par type d'emploi ---");
+        System.out.println("Fonctionnalite non implementee.");
+    }
+
+    private void consumerCreditCampaignView() {
+        System.out.println("\n--- Usage Business: campagne publicitaire credit de consommation ---");
+        System.out.println("Fonctionnalite non implementee.");
     }
 
     private void decisionEngine() {
-        System.out.println("\n--- Moteur de Décision Automatique ---");
-        decisionService.decisionEngine();
+        int choice;
+        do {
+            System.out.println("\n--- Moteur de Decision Automatique ---");
+            System.out.println("1. Approuver un credit");
+            System.out.println("0. Retour au menu principal");
+            System.out.print("Votre choix: ");
+            choice = getChoice();
+
+            switch (choice) {
+                case 1:
+                    approveCreditView();
+                    break;
+                case 0:
+                    System.out.println("Retour au menu principal.");
+                    break;
+                default:
+                    System.out.println("Choix invalide, reessayez.");
+            }
+        } while (choice != 0);
+    }
+
+    private void approveCreditView() {
+        System.out.println("\n--- Approuver un credit ---");
+        System.out.print("ID du credit a approuver: ");
+        String creditIdStr = scanner.nextLine();
+        System.out.println("Fonctionnalite non implementee.");
     }
 }
