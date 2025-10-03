@@ -27,8 +27,8 @@ public class EmployeRepository {
             stmt.setString(2, employe.getNom());
             stmt.setString(3, employe.getPrenom());
             stmt.setString(4, employe.getVille());
-            stmt.setString(5, employe.getInvestissement());
-            stmt.setString(6, employe.getPlacement());
+            stmt.setBoolean(5, employe.getInvestissement());
+            stmt.setBoolean(6, employe.getPlacement());
             stmt.setDate(7, Date.valueOf(employe.getDateNaissance()));
             stmt.setInt(8, employe.getNombreEnfants());
             stmt.setInt(9, employe.getScore());
@@ -53,8 +53,8 @@ public class EmployeRepository {
             stmt.setString(1, employe.getNom());
             stmt.setString(2, employe.getPrenom());
             stmt.setString(3, employe.getVille());
-            stmt.setString(4, employe.getInvestissement());
-            stmt.setString(5, employe.getPlacement());
+            stmt.setBoolean(4, employe.getInvestissement());
+            stmt.setBoolean(5, employe.getPlacement());
             stmt.setDate(6, Date.valueOf(employe.getDateNaissance()));
             stmt.setInt(7, employe.getNombreEnfants());
             stmt.setInt(8, employe.getScore());
@@ -93,8 +93,8 @@ public class EmployeRepository {
                             res.getDate("date_naissance").toLocalDate(),
                             res.getString("ville"),
                             res.getInt("nombre_enfants"),
-                            res.getString("investissement"),
-                            res.getString("placement"),
+                            res.getBoolean("investissement"),
+                            res.getBoolean("placement"),
                             SituationFamiliale.valueOf(res.getString("situation_familiale")),
                             res.getTimestamp("created_at").toLocalDateTime(),
                             res.getInt("score"),
@@ -124,8 +124,8 @@ public class EmployeRepository {
                         res.getDate("date_naissance").toLocalDate(),
                         res.getString("ville"),
                         res.getInt("nombre_enfants"),
-                        res.getString("investissement"),
-                        res.getString("placement"),
+                        res.getBoolean("investissement"),
+                        res.getBoolean("placement"),
                         SituationFamiliale.valueOf(res.getString("situation_familiale")),
                         res.getTimestamp("created_at").toLocalDateTime(),
                         res.getInt("score"),

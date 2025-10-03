@@ -26,8 +26,8 @@ public class ProfessionnelRepository {
             stmt.setString(2, professionnel.getNom());
             stmt.setString(3, professionnel.getPrenom());
             stmt.setString(4, professionnel.getVille());
-            stmt.setString(5, professionnel.getInvestissement());
-            stmt.setString(6, professionnel.getPlacement());
+            stmt.setBoolean(5, professionnel.getInvestissement());
+            stmt.setBoolean(6, professionnel.getPlacement());
             stmt.setDate(7, Date.valueOf(professionnel.getDateNaissance()));
             stmt.setInt(8, professionnel.getNombreEnfants());
             stmt.setInt(9, professionnel.getScore());
@@ -51,8 +51,8 @@ public class ProfessionnelRepository {
             stmt.setString(1, professionnel.getNom());
             stmt.setString(2, professionnel.getPrenom());
             stmt.setString(3, professionnel.getVille());
-            stmt.setString(4, professionnel.getInvestissement());
-            stmt.setString(5, professionnel.getPlacement());
+            stmt.setBoolean(4, professionnel.getInvestissement());
+            stmt.setBoolean(5, professionnel.getPlacement());
             stmt.setDate(6, Date.valueOf(professionnel.getDateNaissance()));
             stmt.setInt(7, professionnel.getNombreEnfants());
             stmt.setInt(8, professionnel.getScore());
@@ -94,8 +94,8 @@ public class ProfessionnelRepository {
                             res.getDate("date_naissance").toLocalDate(),
                             res.getString("ville"),
                             res.getInt("nombre_enfants"),
-                            res.getString("investissement"),
-                            res.getString("placement"),
+                            res.getBoolean("investissement"),
+                            res.getBoolean("placement"),
                             SituationFamiliale.valueOf(res.getString("situation_familiale")),
                             res.getTimestamp("created_at").toLocalDateTime(),
                             res.getInt("score")
@@ -124,8 +124,8 @@ public class ProfessionnelRepository {
                         res.getDate("date_naissance").toLocalDate(),
                         res.getString("ville"),
                         res.getInt("nombre_enfants"),
-                        res.getString("investissement"),
-                        res.getString("placement"),
+                        res.getBoolean("investissement"),
+                        res.getBoolean("placement"),
                         SituationFamiliale.valueOf(res.getString("situation_familiale")),
                         res.getTimestamp("created_at").toLocalDateTime(),
                         res.getInt("score")

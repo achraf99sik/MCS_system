@@ -15,8 +15,8 @@ abstract public class Personne {
     protected LocalDate dateNaissance;
     protected String ville;
     protected Integer nombreEnfants;
-    protected String investissement;
-    protected String placement;
+    protected boolean investissement;
+    protected boolean placement;
     protected SituationFamiliale situationFamiliale;
     protected LocalDateTime createdAt;
     protected Integer score;
@@ -27,8 +27,8 @@ abstract public class Personne {
             LocalDate dateNaissance,
             String ville,
             Integer nombreEnfants,
-            String investissement,
-            String placement,
+            boolean investissement,
+            boolean placement,
             SituationFamiliale situationFamiliale,
             LocalDateTime createdAt,
             Integer score
@@ -51,8 +51,8 @@ abstract public class Personne {
             LocalDate dateNaissance,
             String ville,
             Integer nombreEnfants,
-            String investissement,
-            String placement,
+            boolean investissement,
+            boolean placement,
             SituationFamiliale situationFamiliale,
             LocalDateTime createdAt,
             Integer score
@@ -117,19 +117,19 @@ abstract public class Personne {
         this.nombreEnfants = nombreEnfants;
     }
 
-    public String getInvestissement() {
+    public boolean getInvestissement() {
         return investissement;
     }
 
-    public void setInvestissement(String investissement) {
+    public void setInvestissement(boolean investissement) {
         this.investissement = investissement;
     }
 
-    public String getPlacement() {
+    public boolean getPlacement() {
         return placement;
     }
 
-    public void setPlacement(String placement) {
+    public void setPlacement(boolean placement) {
         this.placement = placement;
     }
 

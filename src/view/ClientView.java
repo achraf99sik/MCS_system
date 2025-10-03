@@ -31,10 +31,10 @@ public class ClientView {
         String ville = scanner.nextLine();
         System.out.print("Nombre d'enfants: ");
         int nombreEnfants = Integer.parseInt(scanner.nextLine());
-        System.out.print("Investissement: ");
-        String investissement = scanner.nextLine();
-        System.out.print("Placement: ");
-        String placement = scanner.nextLine();
+        System.out.print("Investissement (true/false): ");
+        boolean investissement = Boolean.parseBoolean(scanner.nextLine());
+        System.out.print("Placement (true/false): ");
+        boolean placement = Boolean.parseBoolean(scanner.nextLine());
         System.out.print("Situation familiale (CELIBATAIRE, MARIE, DIVORCE, VEUT): ");
         String situationFamilialeStr = scanner.nextLine();
         System.out.print("etes-vous un employe ou un professionnel(1. employe, 2. professionnel): ");
@@ -144,18 +144,16 @@ public class ClientView {
             if (ville.isEmpty()) ville = client.getVille();
 
             System.out.print("Nombre d'enfants (" + client.getNombreEnfants() + "): ");
-            String enfantsStr = scanner.nextLine();
-            int nombreEnfants = enfantsStr.isEmpty()
-                    ? client.getNombreEnfants()
-                    : Integer.parseInt(enfantsStr);
+            String nombreEnfantsStr = scanner.nextLine();
+            int nombreEnfants = nombreEnfantsStr.isEmpty() ? client.getNombreEnfants() : Integer.parseInt(nombreEnfantsStr);
 
             System.out.print("Investissement (" + client.getInvestissement() + "): ");
-            String investissement = scanner.nextLine();
-            if (investissement.isEmpty()) investissement = client.getInvestissement();
+            String investissementStr = scanner.nextLine();
+            boolean investissement = investissementStr.isEmpty() ? client.getInvestissement() : Boolean.parseBoolean(investissementStr);
 
             System.out.print("Placement (" + client.getPlacement() + "): ");
-            String placement = scanner.nextLine();
-            if (placement.isEmpty()) placement = client.getPlacement();
+            String placementStr = scanner.nextLine();
+            boolean placement = placementStr.isEmpty() ? client.getPlacement() : Boolean.parseBoolean(placementStr);
 
             System.out.print("Situation familiale (" + client.getSituationFamiliale() + "): ");
             String situationFamilialeStr = scanner.nextLine();

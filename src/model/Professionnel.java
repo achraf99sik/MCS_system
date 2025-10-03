@@ -24,8 +24,8 @@ public class Professionnel extends Personne{
             LocalDate dateNaissance,
             String ville,
             Integer nombreEnfants,
-            String investissement,
-            String placement,
+            boolean investissement,
+            boolean placement,
             SituationFamiliale situationFamiliale,
             LocalDateTime createdAt,
             Integer score
@@ -46,8 +46,8 @@ public class Professionnel extends Personne{
             LocalDate dateNaissance,
             String ville,
             Integer nombreEnfants,
-            String investissement,
-            String placement,
+            boolean investissement,
+            boolean placement,
             SituationFamiliale situationFamiliale,
             LocalDateTime createdAt,
             Integer score
