@@ -1,10 +1,12 @@
 package view;
 
 import enums.*;
+import helper.ScoringHelper;
 import model.Employe;
 import model.Personne;
 import model.Professionnel;
 import service.ClientService;
+import service.ScoreService;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -62,14 +64,14 @@ public class ClientView {
                         placement,
                         SituationFamiliale.valueOf(situationFamilialeStr.toUpperCase()),
                         LocalDateTime.now(),
-                        60,
+                        0,
                         salaire,
                         anciennete,
                         poste,
                         TypeContrat.valueOf(typeContrat.toUpperCase()),
                         Secteur.valueOf(secteur.toUpperCase())
                 );
-
+                employe.setScore(ScoreService.initial(employe));
                 clientService.createClient(employe);
                 break;
             case 2:
@@ -98,6 +100,7 @@ public class ClientView {
                         LocalDateTime.now(),
                         60
                 );
+                professionnel.setScore(ScoreService.initial(professionnel));
                 clientService.createClient(professionnel);
                 break;
             default:
