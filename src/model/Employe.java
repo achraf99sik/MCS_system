@@ -102,6 +102,28 @@ public class Employe extends Personne{
         return secteur;
     }
 
+    @Override
+    public String toString() {
+        return "Employe{" +
+                "\n nom= " + nom +
+                ",\n salaire= " + salaire +
+                ",\n Anciennete= " + Anciennete +
+                ",\n poste= " + poste +
+                ",\n typecontrat= " + typecontrat +
+                ",\n secteur= " + secteur +
+                ",\n id= " + id +
+                ",\n prenom= " + prenom +
+                ",\n dateNaissance= " + dateNaissance +
+                ",\n ville= " + ville +
+                ",\n nombreEnfants= " + nombreEnfants +
+                ",\n investissement= " + investissement +
+                ",\n placement= " + placement +
+                ",\n situationFamiliale= " + situationFamiliale +
+                ",\n createdAt= " + createdAt +
+                ",\n score= " + score +
+                "\n}";
+    }
+
     public void setSecteur(Secteur secteur) {
         this.secteur = secteur;
     }

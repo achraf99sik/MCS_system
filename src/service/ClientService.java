@@ -11,7 +11,8 @@ import repository.ProfessionnelRepository;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ClientService {
     private final ProfessionnelRepository professionnelRepository;
@@ -43,6 +44,14 @@ public class ClientService {
         }
         return employeRepository.get(id);
     }
-    public void deleteClient(){}
-    public void listClients(){}
+    public void deleteClient(UUID id){
+        professionnelRepository.delete(id);
+        employeRepository.delete(id);
+    }
+    public List<Personne> listClients(){
+        List<Personne> clients = new ArrayList<>();
+        clients.addAll(employeRepository.getAll());
+        clients.addAll(professionnelRepository.getAll());
+        return clients;
+    }
 }

@@ -109,6 +109,6 @@ public class Professionnel extends Personne{
                 ",\n situationFamiliale=" + situationFamiliale +
                 ",\n createdAt=" + createdAt +
                 ",\n score=" + score +
-                '}';
+                "\n}";
     }
 }

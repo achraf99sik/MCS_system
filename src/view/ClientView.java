@@ -236,19 +236,27 @@ public class ClientView {
         System.out.println("\n--- Consulter profil client ---");
         System.out.print("ID du client a consulter: ");
         String clientIdStr = scanner.nextLine();
-        System.out.println("Fonctionnalite non implementee.");
+        UUID clientId = UUID.fromString(clientIdStr);
+        System.out.println(clientService.getClient(clientId));
     }
 
     public void deleteClient() {
         System.out.println("\n--- Supprimer client ---");
         System.out.print("ID du client a supprimer: ");
         String clientIdStr = scanner.nextLine();
-        System.out.println("Fonctionnalite non implementee.");
+        UUID clientId = UUID.fromString(clientIdStr);
+        clientService.deleteClient(clientId);
     }
 
     public void listAllClients() {
         System.out.println("\n--- Liste de tous les clients ---");
-        System.out.println("Fonctionnalite non implementee.");
+        for (Personne p : clientService.listClients()) {
+            if (p instanceof Employe) {
+                System.out.println((Employe) p);
+            } else if (p instanceof Professionnel) {
+                System.out.println((Professionnel) p);
+            }
+        }
     }
 
 }
