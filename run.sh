@@ -1,3 +1,5 @@
 javac -d out $(find src -name "*.java")
 
-java -cp "lib/*;out" Main
+jar -cvfm App.jar manifest.mf -C out .
+
+java -jar App.jar
