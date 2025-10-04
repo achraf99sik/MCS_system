@@ -1,18 +1,12 @@
 package service;
 
-import enums.Activite;
-import enums.SituationFamiliale;
 import model.Employe;
 import model.Personne;
 import model.Professionnel;
-import repository.EcheanceRepository;
 import repository.EmployeRepository;
 import repository.ProfessionnelRepository;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ClientService {
     private final ProfessionnelRepository professionnelRepository;

@@ -1,4 +1,5 @@
 import controller.MainMenuController;
+import repository.CreditRepository;
 import repository.EmployeRepository;
 import repository.ProfessionnelRepository;
 import service.*;
@@ -12,7 +13,7 @@ public class Main {
         IncidentService incidentService = new IncidentService();
         ClientService clientService = new ClientService(new ProfessionnelRepository(), new EmployeRepository());
         ScoreService scoreService = new ScoreService();
-        CreditService creditService = new CreditService();
+        CreditService creditService = new CreditService(new CreditRepository());
         PaiementService paiementService = new PaiementService();
         ClientView clientView = new ClientView(clientService);
         MainMenuController menu = new MainMenuController(

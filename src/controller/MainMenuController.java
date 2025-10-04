@@ -1,10 +1,16 @@
 package controller;
 
 import enums.*;
+import model.Credit;
+import model.Echeance;
+import repository.CreditRepository;
+import repository.EcheanceRepository;
 import service.*;
 import view.ClientView;
 
+import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class MainMenuController {
     private final AnalyticsService analyticsService;
@@ -290,7 +296,9 @@ public class MainMenuController {
         System.out.println("\n--- Generer les echeances ---");
         System.out.print("ID du credit: ");
         String creditIdStr = scanner.nextLine();
-        System.out.println("Fonctionnalite non implementee.");
+        Credit credit = creditService.getCredit(UUID.fromString(creditIdStr));
+        List<Echeance> echeances= paiementService.generateEcheances(credit);
+        echeances.forEach(echeance -> new EcheanceRepository().create(echeance));
     }
 
     private void classifyPaymentView() {
