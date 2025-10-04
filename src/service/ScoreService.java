@@ -29,6 +29,12 @@ public class ScoreService {
         } else if (childrens > 0 && childrens <= 2) {
             score++;
         }
+        if (personne.getInvestissement()){
+            score+=10;
+        }
+        if (personne.getPlacement()){
+            score+=10;
+        }
         if (personne instanceof Employe) {
             Employe client = (Employe) personne;
             if (client.getTypecontrat() == TypeContrat.CDI && client.getSecteur() == Secteur.PUBLIC){
