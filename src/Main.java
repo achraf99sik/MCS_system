@@ -23,7 +23,8 @@ public class Main {
                 scoreService,
                 creditService,
                 paiementService,
-                clientView
+                clientView,
+                clientService
         );
         menu.start();
     }

@@ -1,14 +1,25 @@
 package service;
 
+import enums.DecisionCredit;
 import enums.TypeIncident;
 import model.Echeance;
 import model.Incident;
+import model.Personne;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 public class DecisionService {
-    public void decisionEngine(){}
+    public DecisionCredit decisionEngine(Personne client){
+        Integer score = client.getScore();
+        if (score >= 80){
+            return DecisionCredit.ACCORD_IMMEDIAT;
+        } else if (score >= 60) {
+            return DecisionCredit.ETUDE_MANUELLE;
+        }else {
+            return DecisionCredit.REFUS_AUTOMATIQUE;
+        }
+    }
     public int applyIncidentImpact(Incident incident, int currentScore) {
         switch (incident.getTypeIncident()) {
             case IMPAYE_NON_REGLE:

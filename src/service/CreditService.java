@@ -11,8 +11,8 @@ public class CreditService {
     public CreditService(CreditRepository creditRepository){
         this.creditRepository = creditRepository;
     }
-    public void createCredit(Credit credit){
-        creditRepository.create(credit);
+    public void createCredit(Credit credit, UUID clientId){
+        creditRepository.create(credit, clientId);
     }
     public void updateCredit(Credit credit, UUID id){
         creditRepository.update(credit, id);

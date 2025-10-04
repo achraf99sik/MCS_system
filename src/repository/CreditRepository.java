@@ -15,10 +15,10 @@ public class CreditRepository {
     public CreditRepository(){
         this.connection = Connect.gitInstance().getConnection();
     }
-    public void create(Credit credit){
+    public void create(Credit credit, UUID clientId){
         String sql = "INSERT INTO credit (" +
-                "id, date_de_credit, montant_demande, montant_octroye, taux_interet, duree_en_mois, type_credit, decision" +
-                ") VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                "id, date_de_credit, montant_demande, montant_octroye, taux_interet, duree_en_mois, type_credit, decision,employe_id" +
+                ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try(PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setObject(1, credit.getId());
             stmt.setDate(2, Date.valueOf(credit.getDateDeCredit()));
@@ -28,6 +28,7 @@ public class CreditRepository {
             stmt.setInt(6, credit.getDureeEnMois());
             stmt.setString(7, credit.getTypecredit().toString());
             stmt.setString(8, credit.getDecision().toString());
+            stmt.setObject(9, clientId);
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Database error: "+ e.getMessage());
